@@ -41,6 +41,10 @@
       display: flex;
       flex-direction: column;
     }
+    @media (max-width: 480px) {
+      .phone { max-width: none; width: 100%; height: 100%; }
+      html, body { background: var(--bg); }
+    }
     .status {
       height: calc(47px + var(--safe-top));
       padding: var(--safe-top) 22px 0;
