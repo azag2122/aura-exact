@@ -6,29 +6,39 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Aura" />
-  <meta name="theme-color" content="#F4F2F7" />
+  <meta name="theme-color" content="#F2F1F8" />
   <title>Aura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F3F1F6;
-      --pink: #E91E8C;
-      --magenta: #C2186B;
+      --bg: #F2F1F8;
+      --pink: #EE2687;
+      --pink-hot: #F23A96;
+      --magenta: #D6288A;
       --purple: #6B2D9B;
-      --deep: #4A1A7A;
-      --text: #1C1C1E;
-      --muted: #6B6B70;
+      --purple-deep: #3B1C59;
+      --purple-mid: #5B2490;
+      --text: #1A1224;
+      --muted: #6E6778;
+      --tab-muted: #9A93A3;
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --grad-brand: linear-gradient(135deg, #F23A96 0%, #E91E8C 22%, #B02D9A 58%, #5B2490 82%, #3B1C59 100%);
+      --grad-btn: linear-gradient(90deg, #EE2687 0%, #A02DB8 100%);
+      --grad-fab: linear-gradient(160deg, #F23A96 0%, #7B2BB8 100%);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html, body {
       height: 100%;
       background: #000;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, Helvetica, sans-serif;
+      font-family: "Poppins", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
       color: var(--text);
       overflow: hidden;
       touch-action: manipulation;
       overscroll-behavior: none;
+      -webkit-font-smoothing: antialiased;
     }
     .phone {
       position: relative;
@@ -57,6 +67,7 @@
       flex-shrink: 0;
       background: var(--bg);
       z-index: 2;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
     .status .right { display: flex; gap: 6px; align-items: center; font-size: 13px; }
     .bat {
@@ -74,17 +85,17 @@
     .main {
       flex: 1;
       overflow: hidden;
-      padding: 8px 16px 0;
+      padding: 8px 16px 4px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
     .wallet {
-      background: linear-gradient(165deg, #F04A9A 0%, #D6288A 28%, #9B2F9E 62%, #5B2490 100%);
+      background: var(--grad-brand);
       border-radius: 22px;
       padding: 16px 18px 12px;
       color: #fff;
-      box-shadow: 0 10px 28px rgba(120, 30, 140, 0.28);
+      box-shadow: 0 12px 32px rgba(90, 20, 120, 0.32);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -93,9 +104,10 @@
     .member {
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.4px;
-      opacity: 0.95;
+      letter-spacing: 0.6px;
+      opacity: 0.98;
       margin-bottom: 12px;
+      font-variant-numeric: tabular-nums;
     }
     .qr-wrap {
       background: #fff;
@@ -111,8 +123,8 @@
       width: 100%;
       margin-top: 14px;
       padding-top: 10px;
-      border-top: 1px solid rgba(255,255,255,0.35);
-      border-bottom: 1px solid rgba(255,255,255,0.35);
+      border-top: 1px solid rgba(255,255,255,0.38);
+      border-bottom: 1px solid rgba(255,255,255,0.38);
       padding-bottom: 10px;
       display: flex;
       align-items: center;
@@ -121,20 +133,20 @@
       font-weight: 500;
     }
     .balance {
-      display: flex; align-items: center; gap: 6px; font-weight: 600;
+      display: flex; align-items: center; gap: 5px; font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.1px;
     }
-    .coin {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #FFE9A8, #E6B422 55%, #B8860B);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,0.6);
-      display: grid; place-items: center;
-      font-size: 10px; color: #7a5200; font-weight: 800;
+    .aed {
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.95;
     }
     .chev {
       margin-top: 8px;
       width: 14px; height: 8px;
-      border-left: 2px solid rgba(255,255,255,0.9);
-      border-bottom: 2px solid rgba(255,255,255,0.9);
+      border-left: 2px solid rgba(255,255,255,0.92);
+      border-bottom: 2px solid rgba(255,255,255,0.92);
       transform: rotate(-45deg);
       opacity: 0.9;
     }
@@ -154,7 +166,7 @@
       background: #fff;
       border-radius: 18px;
       padding: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 14px rgba(59, 28, 89, 0.07);
       display: grid;
       grid-template-columns: 1fr auto;
       grid-template-rows: auto 1fr auto;
@@ -165,8 +177,9 @@
       grid-column: 1;
       font-size: 16px;
       font-weight: 600;
-      line-height: 1.25;
-      letter-spacing: -0.2px;
+      line-height: 1.3;
+      letter-spacing: -0.15px;
+      color: var(--text);
     }
     .pass-thumb {
       grid-column: 2;
@@ -174,7 +187,7 @@
       width: 86px;
       height: 86px;
       border-radius: 14px;
-      background: linear-gradient(160deg, #F04A9A, #6B2D9B);
+      background: var(--grad-brand);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -183,11 +196,11 @@
       text-align: center;
       font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
       line-height: 1.2;
-      box-shadow: 0 4px 12px rgba(120,30,140,0.25);
+      box-shadow: 0 4px 14px rgba(90, 20, 120, 0.28);
     }
-    .pass-thumb .big { font-size: 15px; margin-top: 4px; }
+    .pass-thumb .big { font-size: 15px; margin-top: 4px; letter-spacing: 0; }
     .get {
       grid-column: 1;
       grid-row: 3;
@@ -198,18 +211,18 @@
       color: #fff;
       font-size: 14px;
       font-weight: 600;
-      background: linear-gradient(90deg, #E91E8C, #7B2BB8);
+      font-family: inherit;
+      background: var(--grad-btn);
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(180, 40, 140, 0.35);
+      box-shadow: 0 4px 16px rgba(180, 40, 140, 0.38);
     }
     .get:active { transform: scale(0.97); opacity: 0.92; }
     .offer.secondary h3 { font-size: 15px; }
     .offer.secondary { opacity: 0.95; flex-basis: 70%; }
 
-    /* Bottom sheet */
     .scrim {
       position: absolute; inset: 0;
-      background: rgba(40, 10, 60, 0.45);
+      background: rgba(40, 16, 70, 0.48);
       opacity: 0; pointer-events: none;
       transition: opacity 0.28s ease;
       z-index: 10;
@@ -243,6 +256,8 @@
       font-weight: 600;
       grid-column: 1 / -1;
       pointer-events: none;
+      color: var(--text);
+      letter-spacing: -0.2px;
     }
     .x {
       grid-column: 2;
@@ -251,10 +266,11 @@
       border: 0; background: transparent;
       font-size: 22px; line-height: 1; color: #222;
       cursor: pointer; justify-self: end;
+      font-family: inherit;
     }
     .panel {
-      border: 1px solid #E5E5EA;
-      background: #F8F8FA;
+      border: 1px solid #E8E6EE;
+      background: #F8F7FB;
       border-radius: 16px;
       padding: 18px 16px 16px;
       display: flex;
@@ -273,29 +289,31 @@
       font-size: 13px;
       color: var(--muted);
       text-align: center;
+      font-weight: 400;
     }
     .or {
       width: 100%;
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #A0A0A5;
+      color: #A39EAB;
       font-size: 12px;
       font-weight: 600;
     }
     .or::before, .or::after {
-      content: ""; flex: 1; height: 1px; background: #E0E0E5;
+      content: ""; flex: 1; height: 1px; background: #E4E1EA;
     }
     .linkish {
       font-size: 13px;
       color: var(--text);
       text-align: center;
-      line-height: 1.35;
+      line-height: 1.4;
       max-width: 280px;
+      font-weight: 400;
     }
     .scans {
       margin-top: 14px;
-      background: #EEF3F8;
+      background: #EEF2F8;
       border-radius: 999px;
       padding: 11px 16px;
       display: flex;
@@ -303,6 +321,7 @@
       gap: 10px;
       font-size: 14px;
       font-weight: 500;
+      color: var(--text);
     }
     .scans svg { flex-shrink: 0; opacity: 0.7; }
     .terms {
@@ -310,7 +329,7 @@
       text-align: center;
       font-size: 13px;
       font-weight: 500;
-      color: var(--text);
+      color: var(--purple-deep);
       text-decoration: none;
     }
 
@@ -319,7 +338,7 @@
       height: calc(64px + var(--safe-bottom));
       padding: 6px 6px calc(6px + var(--safe-bottom));
       background: #fff;
-      border-top: 1px solid #EDEDF0;
+      border-top: 1px solid #EDEAF2;
       display: grid;
       grid-template-columns: 1fr 1fr 1.15fr 1fr 1fr;
       align-items: end;
@@ -329,23 +348,24 @@
     .tab {
       border: 0; background: transparent; cursor: pointer;
       display: flex; flex-direction: column; align-items: center; gap: 3px;
-      font-size: 10px; font-weight: 500; color: #8E8E93; padding: 0;
+      font-size: 10px; font-weight: 500; color: var(--tab-muted);
+      padding: 0; font-family: inherit;
     }
-    .tab.active { color: #6B2D9B; }
+    .tab.active { color: var(--purple-deep); }
     .tab svg { width: 22px; height: 22px; }
     .tab-aura {
       position: relative; top: -18px;
     }
     .tab-aura .fab {
       width: 58px; height: 58px; border-radius: 50%;
-      background: linear-gradient(160deg, #F04A9A, #7B2BB8);
+      background: var(--grad-fab);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       color: #fff; font-size: 9px; font-weight: 700; gap: 2px;
-      box-shadow: 0 6px 16px rgba(160,40,140,0.35);
+      box-shadow: 0 6px 18px rgba(160, 40, 140, 0.4);
       border: 3px solid #fff;
+      letter-spacing: 0.2px;
     }
     .tab-aura .fab svg { width: 18px; height: 18px; }
-    .main { padding-bottom: 4px; }
   </style>
 </head>
 <body>
@@ -365,7 +385,7 @@
         <div class="qr-wrap"><img src="qr.png" alt="Member QR" /></div>
         <div class="wallet-foot">
           <span>Aura Wallet Balance</span>
-          <span class="balance"><span style="font-family:serif;font-weight:700">Ð</span> 37.76 <span class="coin">A</span></span>
+          <span class="balance"><span class="aed">د.إ</span> 37.76</span>
         </div>
         <div class="chev" aria-hidden="true"></div>
       </section>
@@ -386,7 +406,6 @@
         </article>
       </div>
     </div>
-
 
     <nav class="tabbar" aria-label="Main">
       <button type="button" class="tab active">
