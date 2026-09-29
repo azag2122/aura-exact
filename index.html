@@ -113,11 +113,10 @@
       letter-spacing: 0.15px;
     }
     .aed {
-      width: 16px; height: 16px;
+      width: 17px; height: 17px;
       object-fit: contain;
       display: block;
       flex-shrink: 0;
-      filter: brightness(0) invert(1);
     }
     .chev {
       margin-top: 10px;
@@ -197,12 +196,19 @@
 
     .scrim {
       position: absolute; inset: 0;
-      background: rgba(40, 16, 70, 0.48);
+      background: rgba(55, 18, 90, 0.28);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
       opacity: 0; pointer-events: none;
       transition: opacity 0.28s ease;
       z-index: 10;
     }
     .scrim.open { opacity: 1; pointer-events: auto; }
+    .phone.sheet-open .main,
+    .phone.sheet-open .tabbar {
+      filter: blur(10px);
+      transition: filter 0.28s ease;
+    }
     .sheet {
       position: absolute;
       left: 0; right: 0; bottom: 0;
@@ -352,7 +358,7 @@
         <div class="qr-wrap"><img src="qr.png" alt="Member QR" /></div>
         <div class="wallet-foot">
           <span>Aura Wallet Balance</span>
-          <span class="balance"><img class="aed" src="aed.png" alt="" width="16" height="16" /> 37.76</span>
+          <span class="balance"><img class="aed" src="aed.svg" alt="" width="17" height="17" /> 37.76</span>
         </div>
         <svg class="chev" viewBox="0 0 18 10" aria-hidden="true">
           <path d="M1.5 1.5 L9 8.2 L16.5 1.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -423,8 +429,9 @@
   <script>
     const sheet = document.getElementById("sheet");
     const scrim = document.getElementById("scrim");
-    const open = () => { sheet.classList.add("open"); scrim.classList.add("open"); };
-    const close = () => { sheet.classList.remove("open"); scrim.classList.remove("open"); };
+    const app = document.getElementById("app");
+    const open = () => { sheet.classList.add("open"); scrim.classList.add("open"); app.classList.add("sheet-open"); };
+    const close = () => { sheet.classList.remove("open"); scrim.classList.remove("open"); app.classList.remove("sheet-open"); };
     document.getElementById("getOffer").addEventListener("click", open);
     document.getElementById("tabAuraId").addEventListener("click", open);
     document.getElementById("tabOffers").addEventListener("click", open);
